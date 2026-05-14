@@ -40,7 +40,7 @@ namespace InputMonitorMod
             Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} Started!");
 
             config = PluginConfig.Load(Logger);
-            listenAddr = $"http://127.0.0.1:{config.Port}/";
+            listenAddr = $"http://0.0.0.0:{config.Port}/";
 
             currentState = new InputState(config);
             exportedState = new InputState(config);
