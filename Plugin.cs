@@ -417,7 +417,8 @@ namespace InputMonitorMod
             }
         }
         
-        const ws = new WebSocket('ws://127.0.0.1:" + config.Port + @"/state');
+        
+        const ws = new WebSocket('ws://' + window.location.hostname + ':" + config.Port + @"/state');
         ws.binaryType = 'arraybuffer';
         
         ws.onopen = function() {
@@ -440,8 +441,9 @@ namespace InputMonitorMod
         };
         
         function drawImg(img) {
-            if (!img || !img.complete) return;
-            ctx.drawImage(img, 0, 0);
+            if (img && img.complete && img.naturalWidth !== 0) {
+                ctx.drawImage(img, 0, 0);
+            }
         }
         function render() {
             ctx.clearRect(0, 0, 800, 600);
